@@ -1,0 +1,36 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.1",
+	"FriendlyName": "Arteries",
+	"Description": "A procedural modeling toolkit base on blueprint.",
+	"Category": "Modeling",
+	"CreatedBy": "JerryLi",
+	"CreatedByURL": "https://github.com/fullike/Arteries",
+	"DocsURL": "https://github.com/fullike/Arteries",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/4082d0b191644b3483b17dd8623b0676",
+	"SupportURL": "https://forums.unrealengine.com/unreal-engine/marketplace/1663008-a-procedural-modeling-toolkit-base-on-blueprint",
+	"EngineVersion": "5.0.0",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "Arteries",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64",
+				"Lumin",
+				"Android"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ProceduralMeshComponent",
+			"Enabled": true
+		}
+	]
+}

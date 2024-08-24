@@ -1,0 +1,38 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "GSAnimationKeyBlender",
+	"Description": "Game Science Animation Key Blender for Unreal Engine",
+	"Category": "Other",
+	"CreatedBy": "Game Science",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"SupportedTargetPlatforms": [
+		"Win64",
+		"Android",
+		"IOS",
+		"PS5",
+		"XSX"
+	],
+	"Modules": [
+		{
+			"Name": "GSAnimationKeyBlender",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64",
+				"Android",
+				"IOS",
+				"PS5",
+				"XSX"
+			]
+		}
+	]
+}

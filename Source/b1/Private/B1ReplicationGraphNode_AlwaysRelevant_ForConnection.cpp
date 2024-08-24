@@ -1,0 +1,6 @@
+#include "B1ReplicationGraphNode_AlwaysRelevant_ForConnection.h"
+
+UB1ReplicationGraphNode_AlwaysRelevant_ForConnection::UB1ReplicationGraphNode_AlwaysRelevant_ForConnection() {
+}
+
+

@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"Version": 24,
+	"VersionName": "1.6.2",
+	"FriendlyName": "Prefabricator",
+	"Description": "Create Prefabs in Unreal Engine",
+	"Category": "Prefab",
+	"CreatedBy": "Code Respawn",
+	"CreatedByURL": "http://prefabricator.dev",
+	"DocsURL": "http://docs.prefabricator.dev",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/39ccbbf668e84847890992df9922e355",
+	"SupportURL": "",
+	"EngineVersion": "5.0.0",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "PrefabricatorRuntime",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+		{
+			"Name": "ConstructionSystemRuntime",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	]
+}

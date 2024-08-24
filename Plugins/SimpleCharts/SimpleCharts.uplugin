@@ -1,0 +1,35 @@
+{
+	"FileVersion": 3,
+	"Version": 4,
+	"VersionName": "4.0",
+	"FriendlyName": "SimpleCharts",
+	"Description": "",
+	"Category": "Chart",
+	"CreatedBy": "ABoy",
+	"CreatedByURL": "",
+	"DocsURL": "https://drive.google.com/file/d/12zvMTKNIgCuYGchjqf1nUkJnKItypmCV/view",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/0ed62f4ea24a4897ae2920fe45ec11df",
+	"SupportURL": "",
+	"EngineVersion": "5.0.0",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "SimpleCharts",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Android",
+				"Win64"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "WebBrowserWidget",
+			"Enabled": true
+		}
+	]
+}

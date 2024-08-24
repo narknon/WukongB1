@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.08",
+	"FriendlyName": "Motion Matching",
+	"Description": "Motion Matching System",
+	"Category": "Animation",
+	"CreatedBy": "Filmstorm Pty Ltd",
+	"CreatedByURL": "https://www.filmstorm.net",
+	"DocsURL": "https://filmstorm.net/apps/help-center",
+	"MarketplaceURL": "",
+	"SupportURL": "mailto:team@filmstorm.net",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "MM",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64",
+				"PS5",
+				"XSX"
+			]
+		}
+	]
+}

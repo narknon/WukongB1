@@ -1,0 +1,46 @@
+#pragma once
+#include "CoreMinimal.h"
+#include "EUIPageType.generated.h"
+
+UENUM(BlueprintType)
+enum class EUIPageType : uint8 {
+    None,
+    Practice,
+    Equip,
+    Bag,
+    Shop,
+    WeaponBuild,
+    EquipBuild,
+    EquipShop,
+    SoakingMain,
+    RefiningCommonElixir,
+    RefiningElixir,
+    HuluLevel,
+    WineLevel,
+    Farm,
+    TravelNotes,
+    ChapterAward,
+    LearnLegacyTalent,
+    SoulSkillCollect,
+    BenchMark,
+    Archives,
+    Setting,
+    Story,
+    Name,
+    SeqMediaPlayer,
+    LearnTalent,
+    EditionAward,
+    TakePhoto,
+    ObsMode,
+    FaBao,
+    SoulSkill,
+    Teleport,
+    SettingHDR,
+    SettingBrightness,
+    SettingKeyBoard,
+    SeqLogo,
+    PastMemory,
+    SoundtrackV2,
+    EndCredits,
+};
+

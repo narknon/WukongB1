@@ -1,0 +1,25 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "2022.4.12",
+	"FriendlyName": "UMG Spline",
+	"Description": "A spline widget for drawing 2D lines,  and the lines can be conveniently edited in UMG editor.",
+	"Category": "Widget",
+	"CreatedBy": "Qibo Pang",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/30369ae6505949c68913cb12a071a9df",
+	"SupportURL": "",
+	"EngineVersion": "5.0.0",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "UMGSpline",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	]
+}

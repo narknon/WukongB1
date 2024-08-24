@@ -1,0 +1,17 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "WorldCreatorBridge",
+	"Description": "Transfer any terrain you created with World Creator over to Unreal, with a single click only.",
+	"Category": "Other",
+	"CreatedBy": "BiteTheBytes GmbH",
+	"CreatedByURL": "https://www.world-creator.com/",
+	"DocsURL": "https://www.world-creator.com/",
+	"MarketplaceURL": "",
+	"SupportURL": "support@bitethebytes.com",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true
+}

@@ -1,0 +1,18 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "4.2.2",
+	"FriendlyName": "NVIDIA Real-Time Denoiser (NRD)",
+	"Description": "NVIDIA Real-time Denoiser",
+	"Category": "Denoising",
+	"CreatedBy": "NVIDIA",
+	"CreatedByURL": "https://developer.nvidia.com/nvidia-rt-denoiser",
+	"DocsURL": "https://developer.nvidia.com/nvidia-rt-denoiser-early-access-program",
+	"MarketplaceURL": "",
+	"SupportURL": "mailto:NRD-SDK-Support@nvidia.com",
+	"EnabledByDefault": false,
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false
+}

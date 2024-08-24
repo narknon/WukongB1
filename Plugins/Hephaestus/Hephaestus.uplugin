@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Hephaestus",
+	"Description": "A Hybrid Texture Processor for  Game Development ",
+	"Category": "Rendering",
+	"CreatedBy": "Xuan",
+	"CreatedByURL": "https://www.gamesci.com.cn/",
+	"DocsURL": "http://wiki.gs.com/#all-updates",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "Hephaestus",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen"
+		}
+	]
+}

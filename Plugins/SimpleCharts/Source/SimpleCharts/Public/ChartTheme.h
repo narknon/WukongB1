@@ -1,0 +1,46 @@
+#pragma once
+#include "CoreMinimal.h"
+#include "ChartTheme.generated.h"
+
+UENUM(BlueprintType)
+enum class ChartTheme : uint8 {
+    azul,
+    beeinspired,
+    blue,
+    caravan,
+    carp,
+    cool,
+    dark,
+    darkblue,
+    darkbold,
+    darkdigerati,
+    darkfreshcut,
+    darkmushroom,
+    eduardo,
+    forest,
+    freshcut,
+    fruit,
+    gray,
+    green,
+    helianthus,
+    infographic,
+    inspired,
+    jazz,
+    london,
+    macarons,
+    macarons2,
+    mint,
+    red,
+    redvelvet,
+    roma,
+    royal,
+    sakura,
+    shine,
+    techblue,
+    vintage,
+    CustomTheme01,
+    CustomTheme02,
+    CustomTheme03,
+    CustomTheme04,
+};
+
