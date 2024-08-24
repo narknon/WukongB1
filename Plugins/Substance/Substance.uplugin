@@ -20,11 +20,7 @@
 			"Type": "Runtime",
 			"LoadingPhase": "PreDefault",
 			"PlatformAllowList": [
-				"Win64",
-				"Win32",
-				"Lumin",
-				"PS4",
-				"XboxOne"
+				"Win64"
 			]
 		}
 	]

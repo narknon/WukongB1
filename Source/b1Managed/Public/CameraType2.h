@@ -3,7 +3,7 @@
 #include "CameraType2.generated.h"
 
 UENUM(BlueprintType)
-enum class CameraType : uint8 {
+enum class CameraType2 : uint8 {
     None,
     Normal,
     Cine,

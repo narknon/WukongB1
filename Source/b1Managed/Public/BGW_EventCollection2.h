@@ -4,7 +4,7 @@
 #include "BGW_EventCollection2.generated.h"
 
 UCLASS(Blueprintable)
-class UBGW_EventCollection : public UGameInstanceSystemBaseUObj {
+class UBGW_EventCollection2 : public UGameInstanceSystemBaseUObj {
     GENERATED_BODY()
 public:
     UBGW_EventCollection();

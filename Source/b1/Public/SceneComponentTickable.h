@@ -14,7 +14,7 @@ public:
     void TickComponentGS(float DeltaTime);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void EndPlayGS(const TEnumAsByte<EEndPlayReason::Type> EndPlayReason);
+    void EndPlayGS(const EEndPlayReason::Type EndPlayReason);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void BeginPlayGS();

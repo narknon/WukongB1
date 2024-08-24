@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "InputTrigger.h"
+#include "InputTriggers.h"
 #include "GSInputTriggerRepeatPressed.generated.h"
 
 UCLASS(Blueprintable, CollapseCategories, EditInlineNew, MinimalAPI, Config=Engine)

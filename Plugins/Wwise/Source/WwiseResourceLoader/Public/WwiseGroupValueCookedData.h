@@ -20,5 +20,10 @@ public:
     FName DebugName;
     
     FWwiseGroupValueCookedData();
+
+    friend uint32 GetTypeHash(const FWwiseGroupValueCookedData& Thing)
+    {
+        return 0;
+    }
 };
 

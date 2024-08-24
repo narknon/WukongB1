@@ -7,7 +7,7 @@ UCLASS(Blueprintable, MinimalAPI)
 class UCalliopeMovieSceneCinematicShotTrack : public UMovieSceneSubTrack {
     GENERATED_BODY()
 public:
-    UCalliopeMovieSceneCinematicShotTrack();
+    UCalliopeMovieSceneCinematicShotTrack(const FObjectInitializer& Initializer);
 
 };
 

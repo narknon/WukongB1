@@ -1,7 +1,7 @@
 using UnrealBuildTool;
 
-public class b1-Managed : ModuleRules {
-    public b1-Managed(ReadOnlyTargetRules Target) : base(Target) {
+public class b1Managed : ModuleRules {
+    public b1Managed(ReadOnlyTargetRules Target) : base(Target) {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         bLegacyPublicIncludePaths = false;
         ShadowVariableWarningLevel = WarningLevel.Warning;
@@ -22,7 +22,7 @@ public class b1-Managed : ModuleRules {
             "EnhancedInput",
             "GSAnimationKeyBlender",
             "GSDynamicSDF",
-            "GSE-ProtobufDB",
+            "GSEProtobufDB",
             "GSEngineExtent",
             "GSInput",
             "GSNiagara",

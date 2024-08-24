@@ -21,6 +21,11 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FWwiseExternalSourceCookedData> ExternalSources;
+
+    friend uint32 GetTypeHash(const FWwiseSwitchContainerLeafCookedData& Thing)
+    {
+        return 0;
+    }
     
     FWwiseSwitchContainerLeafCookedData();
 };

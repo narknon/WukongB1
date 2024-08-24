@@ -1,6 +1,7 @@
 #include "CalliopeMovieSceneCinematicShotTrack.h"
 
-UCalliopeMovieSceneCinematicShotTrack::UCalliopeMovieSceneCinematicShotTrack() {
+UCalliopeMovieSceneCinematicShotTrack::UCalliopeMovieSceneCinematicShotTrack(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer) {
 }
 
 

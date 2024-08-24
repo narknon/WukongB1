@@ -5,7 +5,7 @@
 #include "BGULevelStreamingPauseSection.generated.h"
 
 UCLASS(Blueprintable, MinimalAPI)
-class UBGULevelStreamingPauseSection : public UMovieSceneSection, public IMovieSceneEntityProvider {
+class UBGULevelStreamingPauseSection : public UMovieSceneSection/*, public IMovieSceneEntityProvider*/ {
     GENERATED_BODY()
 public:
     UBGULevelStreamingPauseSection();

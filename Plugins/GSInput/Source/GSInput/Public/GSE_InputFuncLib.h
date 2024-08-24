@@ -2,9 +2,6 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "ETriggerEvent.h"
-#include "ModifyContextOptions.h"
 #include "InputCoreTypes.h"
 #include "Input/Events.h"
 #include "Input/Events.h"
@@ -12,6 +9,7 @@
 #include "EGSInputDeviceType.h"
 #include "EGSInputProcOrder.h"
 #include "EGSInputType.h"
+#include "EnhancedInputSubsystemInterface.h"
 #include "GSE_InputFuncLib.generated.h"
 
 class APlayerController;
@@ -67,7 +65,7 @@ public:
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContext"))
     static void RegisterGSInputProc(const UObject* WorldContext, EGSInputProcOrder Order);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION()
     static TArray<FKey> QueryKeysMappedToAction(APlayerController* PlayerController, const UInputAction* Action);
     
     UFUNCTION(BlueprintCallable)

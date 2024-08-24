@@ -20,11 +20,7 @@
 			"Type": "Runtime",
 			"LoadingPhase": "PreDefault",
 			"PlatformAllowList": [
-				"Win64",
-				"Android",
-				"IOS",
-				"PS5",
-				"XSX"
+				"Win64"
 			]
 		},
 		{
@@ -32,11 +28,7 @@
 			"Type": "Runtime",
 			"LoadingPhase": "PreDefault",
 			"PlatformAllowList": [
-				"Win64",
-				"Android",
-				"IOS",
-				"PS5",
-				"XSX"
+				"Win64"
 			]
 		},
 		{
@@ -44,11 +36,7 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"PlatformAllowList": [
-				"Win64",
-				"Android",
-				"IOS",
-				"PS5",
-				"XSX"
+				"Win64"
 			]
 		}
 	],
@@ -71,6 +59,10 @@
 		},
 		{
 			"Name": "TexAlphaDA",
+			"Enabled": true
+		},
+		{
+			"Name": "Arteries",
 			"Enabled": true
 		}
 	]

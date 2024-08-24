@@ -3,11 +3,15 @@
 #include "UObject/Object.h"
 #include "EJavasrciptUserInterfaceActionType.h"
 #include "JavascriptSlateIcon.h"
+#include "JavascriptToolbarButtonContext.h"
 #include "JavascriptMenuContext.generated.h"
 
 UCLASS(Blueprintable)
 class JAVASCRIPTUMG_API UJavascriptMenuContext : public UObject {
     GENERATED_BODY()
+
+    DECLARE_DYNAMIC_DELEGATE_RetVal(bool, FExecuteAction);
+    DECLARE_DYNAMIC_DELEGATE_RetVal(bool, FGetActionCheckState);
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText Description;
@@ -28,7 +32,7 @@ public:
     FExecuteAction OnExecute;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FActionCheckStateDelegate OnGetActionCheckState;
+    FGetActionCheckState OnGetActionCheckState;
     
     UJavascriptMenuContext();
 

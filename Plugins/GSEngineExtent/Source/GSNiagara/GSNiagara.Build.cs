@@ -11,6 +11,7 @@ public class GSNiagara : ModuleRules {
             "CoreUObject",
             "Engine",
             "Niagara",
+            "NiagaraCore",
         });
     }
 }

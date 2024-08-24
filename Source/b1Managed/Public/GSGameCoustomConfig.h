@@ -4,7 +4,7 @@
 #include "GSGameCoustomConfig.generated.h"
 
 UCLASS(Blueprintable, Config=Engine)
-class B1-MANAGED_API UGSGameCoustomConfig : public UDeveloperSettings {
+class B1MANAGED_API UGSGameCoustomConfig : public UDeveloperSettings {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))

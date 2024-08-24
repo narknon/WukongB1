@@ -46,7 +46,7 @@ public:
     int32 GetDebugID();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void EndPlayInCS(const TEnumAsByte<EEndPlayReason::Type> EndPlayReason);
+    void EndPlayInCS(const EEndPlayReason::Type EndPlayReason);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void BeginPlayInCS();

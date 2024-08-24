@@ -1,8 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "EInputActionValueType.h"
-#include "InputModifier.h"
+#include "InputModifiers.h"
 #include "GSInputModifierForceSetValue.generated.h"
 
 UCLASS(Blueprintable, CollapseCategories, EditInlineNew, MinimalAPI, Config=Engine)

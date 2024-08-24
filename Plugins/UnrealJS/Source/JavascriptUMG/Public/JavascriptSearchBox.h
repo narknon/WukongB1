@@ -5,6 +5,7 @@
 #include "Input/Events.h"
 #include "Components/SlateWrapperTypes.h"
 #include "Components/Widget.h"
+
 #include "JavascriptSearchBox.generated.h"
 
 class UJavascriptContext;

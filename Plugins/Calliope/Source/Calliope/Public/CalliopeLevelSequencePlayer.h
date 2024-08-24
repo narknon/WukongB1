@@ -27,7 +27,7 @@ private:
     UObject* EventReceiver;
     
 public:
-    UCalliopeLevelSequencePlayer();
+    UCalliopeLevelSequencePlayer(const FObjectInitializer& Initializer);
 
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool TryGetMarkedSecond(const FString& InFrameLabel, float& OutTimeSecond) const;

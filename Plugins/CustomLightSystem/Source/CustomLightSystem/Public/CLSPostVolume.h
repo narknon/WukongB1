@@ -9,7 +9,7 @@ class IBlendableInterface;
 class UBlendableInterface;
 
 UCLASS(Blueprintable)
-class CUSTOMLIGHTSYSTEM_API ACLSPostVolume : public ACLSBaseVolume, public IInterface_PostProcessVolume {
+class CUSTOMLIGHTSYSTEM_API ACLSPostVolume : public ACLSBaseVolume/*, public IInterface_PostProcessVolume*/ {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Interp, meta=(AllowPrivateAccess=true))

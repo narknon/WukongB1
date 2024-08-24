@@ -6,7 +6,7 @@
 #include "GSRetainerBox2.generated.h"
 
 UCLASS(Blueprintable)
-class UGSRetainerBox : public UGSRetainerBox {
+class UGSRetainerBox2 : public UGSRetainerBox {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

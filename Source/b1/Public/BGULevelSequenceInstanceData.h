@@ -7,7 +7,7 @@ UCLASS(Blueprintable)
 class B1_API UBGULevelSequenceInstanceData : public UDefaultLevelSequenceInstanceData {
     GENERATED_BODY()
 public:
-    UBGULevelSequenceInstanceData();
+    UBGULevelSequenceInstanceData(const FObjectInitializer& ObjectInitializer);
 
 };
 

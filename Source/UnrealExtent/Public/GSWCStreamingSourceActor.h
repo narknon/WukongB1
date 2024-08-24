@@ -9,8 +9,8 @@ UCLASS(Blueprintable)
 class UNREALEXTENT_API AGSWCStreamingSourceActor : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    UGSWorldCompositionStreamingSourceComponent* StreamingSorceComponent;
+    /*UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UGSWorldCompositionStreamingSourceComponent* StreamingSorceComponent;*/
     
     AGSWCStreamingSourceActor(const FObjectInitializer& ObjectInitializer);
 

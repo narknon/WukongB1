@@ -1,6 +1,7 @@
 #include "JavascriptTreeView.h"
 
-UJavascriptTreeView::UJavascriptTreeView() {
+UJavascriptTreeView::UJavascriptTreeView(const FObjectInitializer& ObjectInitializer)
+    : Super(ObjectInitializer) {
     this->JavascriptContext = NULL;
     this->SelectionMode = ESelectionMode::Single;
 }

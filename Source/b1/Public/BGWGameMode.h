@@ -69,7 +69,7 @@ public:
     void BeginPlayCS();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void BeginEndPlayCS(const TEnumAsByte<EEndPlayReason::Type> EndPlayReason);
+    void BeginEndPlayCS(const EEndPlayReason::Type EndPlayReason);
     
 };
 

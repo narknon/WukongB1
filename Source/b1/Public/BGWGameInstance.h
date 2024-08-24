@@ -79,7 +79,7 @@ public:
     void SwitchLoadingScreenThread(bool UseSlateThread);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void StartGameInstanceForCS(TEnumAsByte<EStartGameInstanceTypeForCS> StartType);
+    void StartGameInstanceForCS(EStartGameInstanceTypeForCS StartType);
     
     UFUNCTION(BlueprintCallable)
     void RequestFadeAway();

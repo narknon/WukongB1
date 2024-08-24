@@ -4,7 +4,7 @@
 
 AGSWCStreamingSourceActor::AGSWCStreamingSourceActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
-    this->StreamingSorceComponent = CreateDefaultSubobject<UGSWorldCompositionStreamingSourceComponent>(TEXT("StreamingSorceComponent"));
+    /*this->StreamingSorceComponent = CreateDefaultSubobject<UGSWorldCompositionStreamingSourceComponent>(TEXT("StreamingSorceComponent"));*/
 }
 
 

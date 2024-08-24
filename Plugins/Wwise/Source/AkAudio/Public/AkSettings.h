@@ -19,6 +19,7 @@ class UPhysicalMaterial;
 UCLASS(Blueprintable, DefaultConfig, Config=Game)
 class AKAUDIO_API UAkSettings : public UObject {
     GENERATED_BODY()
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAkRoomSetEnvSwitch);
 public:
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 MaxSimultaneousReverbVolumes;

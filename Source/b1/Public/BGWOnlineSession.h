@@ -36,13 +36,13 @@ protected:
     void OnSearchSessionsCompleteCS(bool Success);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void OnJoinSessionCompleteCS(TEnumAsByte<EBGWJoinSessionResult> Result);
+    void OnJoinSessionCompleteCS(EBGWJoinSessionResult Result);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnFindSessionByIdCompleteCS(bool Success);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void OnDestroySessionCompleteCS(TEnumAsByte<EBGWOnlineSessionType> SessionType, bool Success);
+    void OnDestroySessionCompleteCS(EBGWOnlineSessionType SessionType, bool Success);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnCreateSessionCompleteCS(bool Success);

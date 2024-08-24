@@ -12,7 +12,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ItemHeight;
     
-    UJavascriptListView();
+    UJavascriptListView(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable)
     void RequestListRefresh();

@@ -8,7 +8,7 @@
 #include "CalliopeMovieSceneCameraCutSection.generated.h"
 
 UCLASS(Blueprintable, MinimalAPI)
-class UCalliopeMovieSceneCameraCutSection : public UMovieSceneSection, public IMovieSceneEntityProvider {
+class UCalliopeMovieSceneCameraCutSection : public UMovieSceneSection/*, public IMovieSceneEntityProvider*/ {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

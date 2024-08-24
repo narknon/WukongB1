@@ -35,6 +35,11 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName DebugName;
+
+    friend uint32 GetTypeHash(const FWwiseEventCookedData& Thing)
+    {
+        return 0;
+    }
     
     FWwiseEventCookedData();
 };

@@ -1,6 +1,6 @@
 #include "BGULevelSequenceInstanceData.h"
 
-UBGULevelSequenceInstanceData::UBGULevelSequenceInstanceData() {
+UBGULevelSequenceInstanceData::UBGULevelSequenceInstanceData(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
 
 

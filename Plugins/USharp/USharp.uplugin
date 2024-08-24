@@ -21,13 +21,7 @@
 			"Type": "Runtime",
 			"LoadingPhase": "PostDefault",
 			"PlatformAllowList": [
-				"Win64",
-				"Mac",
-				"Linux",
-				"Android",
-				"IOS",
-				"PS5",
-				"XSX"
+				"Win64"
 			]
 		}
 	]

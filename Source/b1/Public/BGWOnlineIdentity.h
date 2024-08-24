@@ -20,7 +20,7 @@ protected:
     void OnLoginCompletedCS(bool bSuccessful);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void OnGetUserPrivilegeCompleteCS(TEnumAsByte<EBGWUserPrivileges> Privilege, EBGWPrivilegeResult PrivilegeResult);
+    void OnGetUserPrivilegeCompleteCS(EBGWUserPrivileges Privilege, EBGWPrivilegeResult PrivilegeResult);
     
 public:
     UFUNCTION(BlueprintCallable)

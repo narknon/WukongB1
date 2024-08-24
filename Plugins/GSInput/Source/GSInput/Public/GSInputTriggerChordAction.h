@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "InputTrigger.h"
+#include "InputTriggers.h"
+
 #include "GSInputTriggerChordAction.generated.h"
 
 class UInputAction;

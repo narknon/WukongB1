@@ -8,7 +8,7 @@
 class UMovieSceneSection;
 
 UCLASS(Blueprintable)
-class CALLIOPE_API UMovieSceneCalliopeTrack : public UMovieSceneNameableTrack, public IMovieSceneTrackTemplateProducer {
+class CALLIOPE_API UMovieSceneCalliopeTrack : public UMovieSceneNameableTrack/*, public IMovieSceneTrackTemplateProducer*/ {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

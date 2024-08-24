@@ -62,7 +62,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UWidget*> ColumnWidgets;
     
-    UJavascriptTreeView();
+    UJavascriptTreeView(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable)
     void SetSingleExpandedItem(UObject* InItem);
@@ -80,7 +80,7 @@ public:
     void RequestTreeRefresh();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void OnSelectionChanged(UObject* Object, TEnumAsByte<ESelectInfo::Type> Type);
+    void OnSelectionChanged(UObject* Object, ESelectInfo::Type Type);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnDoubleClick(UObject* Object);

@@ -8,3 +8,9 @@ UGSInputTriggerWiggle::UGSInputTriggerWiggle() {
 }
 
 
+ETriggerState UGSInputTriggerWiggle::UpdateState_Implementation(const UEnhancedPlayerInput* PlayerInput, FInputActionValue ModifiedValue, float DeltaTime)
+{
+    ETriggerState State = ETriggerState::None;
+
+    return State;
+}

@@ -7,7 +7,7 @@
 ABGUTamerBase::ABGUTamerBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->bNetTemporary = true;
     this->bReplicates = true;
-    this->RemoteRole = ROLE_SimulatedProxy;
+    this->SetRemoteRoleForBackwardsCompat(ROLE_SimulatedProxy);
     this->SpawnCollisionHandlingMethod = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
     this->RootComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CollisionCylinder"));
     this->bBeginPlayFromLevelStreaming = false;

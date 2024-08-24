@@ -10,3 +10,11 @@ public:
     FSharpActorComponentTickFunction();
 };
 
+template<>
+struct TStructOpsTypeTraits<FSharpActorComponentTickFunction> : public TStructOpsTypeTraitsBase2<FSharpActorComponentTickFunction>
+{
+    enum
+    {
+        WithCopy = false
+    };
+};

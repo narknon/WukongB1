@@ -10,6 +10,7 @@ public class JavascriptUMG : ModuleRules {
             "Core",
             "CoreUObject",
             "Engine",
+            "InputCore",
             "Slate",
             "SlateCore",
             "UMG",

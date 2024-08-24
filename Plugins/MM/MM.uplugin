@@ -20,9 +20,7 @@
 			"Type": "Runtime",
 			"LoadingPhase": "PreDefault",
 			"PlatformAllowList": [
-				"Win64",
-				"PS5",
-				"XSX"
+				"Win64"
 			]
 		}
 	]

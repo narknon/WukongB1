@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{660F9C6D-4853-E9F2-08A9-D78B1642B7B9}",
+	"EngineAssociation": "{F3A2FFD7-4A82-82B0-BAEA-D18CEBB1D08E}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -37,38 +37,10 @@
 		{
 			"Name": "DownloadTookit",
 			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"PlatformDenyList": [
-				"XSX"
-			]
+			"LoadingPhase": "Default"
 		},
 		{
 			"Name": "GSFileHelper",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
-		},
-		{
-			"Name": ".idea",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
-		},
-		{
-			"Name": "b1-Managed",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
-		},
-		{
-			"Name": "FFXFSR3Settings",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
-		},
-		{
-			"Name": "GSE-ProtobufDB",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
-		},
-		{
-			"Name": "Protobuf-RunTime",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
@@ -103,8 +75,17 @@
 			"Enabled": true
 		},
 		{
+			"Name": "NiagaraExtras",
+			"Enabled": false
+		},
+		{
 			"Name": "CustomLightSystem",
 			"Enabled": true
+		},
+		{
+			"Name": "GFur",
+			"Enabled": false,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/9073da3940d4482384d111870ccc9ab7"
 		},
 		{
 			"Name": "OculusVR",
@@ -147,15 +128,19 @@
 			"Enabled": true
 		},
 		{
+			"Name": "ActorPortrait",
+			"Enabled": false
+		},
+		{
+			"Name": "LGUI",
+			"Enabled": false
+		},
+		{
 			"Name": "NiagaraUIRenderer",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/fd24d23ca57b4c59a4e4b7368da250bd",
 			"SupportedTargetPlatforms": [
-				"Win32",
-				"Win64",
-				"Android",
-				"PS5",
-				"XSX"
+				"Win64"
 			]
 		},
 		{
@@ -193,6 +178,14 @@
 		{
 			"Name": "Wwise",
 			"Enabled": true
+		},
+		{
+			"Name": "CustomHairStrand",
+			"Enabled": false
+		},
+		{
+			"Name": "GPUSkinning",
+			"Enabled": false
 		},
 		{
 			"Name": "ControlRig",
@@ -282,6 +275,26 @@
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/01f39767dc6b4290877f38365787cbf8"
 		},
 		{
+			"Name": "MagicLeap",
+			"Enabled": false
+		},
+		{
+			"Name": "MagicLeapMedia",
+			"Enabled": false
+		},
+		{
+			"Name": "MagicLeapPassableWorld",
+			"Enabled": false
+		},
+		{
+			"Name": "LuminPlatformFeatures",
+			"Enabled": false
+		},
+		{
+			"Name": "MLSDK",
+			"Enabled": false
+		},
+		{
 			"Name": "SteamVR",
 			"Enabled": false
 		},
@@ -297,11 +310,7 @@
 			"Name": "GSAnimationKeyBlender",
 			"Enabled": true,
 			"SupportedTargetPlatforms": [
-				"Win64",
-				"Android",
-				"IOS",
-				"PS5",
-				"XSX"
+				"Win64"
 			]
 		},
 		{
@@ -327,6 +336,10 @@
 		{
 			"Name": "GSCameraHelper",
 			"Enabled": true
+		},
+		{
+			"Name": "SetResAndShot",
+			"Enabled": false
 		},
 		{
 			"Name": "Streamline",
@@ -387,6 +400,11 @@
 			"Enabled": true
 		},
 		{
+			"Name": "Sentry",
+			"Enabled": false,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/99f5c02de5fa49ab97976a3a852e5408"
+		},
+		{
 			"Name": "ElectraSubtitles",
 			"Enabled": true
 		},
@@ -397,6 +415,10 @@
 		{
 			"Name": "AnimToTexture",
 			"Enabled": true
+		},
+		{
+			"Name": "PlayFabParty",
+			"Enabled": false
 		},
 		{
 			"Name": "OpacityMicroMap",

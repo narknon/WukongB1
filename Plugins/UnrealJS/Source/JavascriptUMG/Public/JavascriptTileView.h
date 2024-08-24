@@ -14,10 +14,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UJavascriptContext* JavascriptContext;
     
-    UJavascriptTileView();
+    UJavascriptTileView(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void OnSelectionChanged(UObject* Object, TEnumAsByte<ESelectInfo::Type> Type);
+    void OnSelectionChanged(UObject* Object, ESelectInfo::Type Type);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnDoubleClick(UObject* Object);

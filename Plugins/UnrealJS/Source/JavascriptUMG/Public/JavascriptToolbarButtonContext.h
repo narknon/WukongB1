@@ -4,15 +4,19 @@
 #include "JavascriptSlateIcon.h"
 #include "JavascriptToolbarButtonContext.generated.h"
 
+DECLARE_DYNAMIC_DELEGATE_RetVal(bool, FBoolDelegate);
+DECLARE_DYNAMIC_DELEGATE_RetVal(FText, FTextDelegate);
+DECLARE_DYNAMIC_DELEGATE_RetVal(FJavascriptSlateIcon, FIconDelegate);
+
 UCLASS(Blueprintable)
 class JAVASCRIPTUMG_API UJavascriptToolbarButtonContext : public UObject {
     GENERATED_BODY()
 public:
-    DECLARE_DYNAMIC_DELEGATE_RetVal(FText, FTextDelegate);
+    
     DECLARE_DYNAMIC_DELEGATE_OneParam(FJavascriptExecuteActionWithEditingObject, UObject*, EditingObject);
     DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(bool, FJavascriptCanExecuteActionWithEditingObject, UObject*, EditingObject);
-    DECLARE_DYNAMIC_DELEGATE_RetVal(FJavascriptSlateIcon, FIconDelegate);
-    DECLARE_DYNAMIC_DELEGATE_RetVal(bool, FBoolDelegate);
+    
+
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTextDelegate OnGetLabel;

@@ -5,7 +5,7 @@
 UENUM(BlueprintType)
 enum EBGWSubsystemType {
     Unknown,
-    NULL,
+    Null,
     Steam,
     Epic,
     TENCENT,

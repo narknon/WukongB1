@@ -1,6 +1,7 @@
 #include "CalliopeLevelSequencePlayer.h"
 
-UCalliopeLevelSequencePlayer::UCalliopeLevelSequencePlayer() {
+UCalliopeLevelSequencePlayer::UCalliopeLevelSequencePlayer(const FObjectInitializer& ObjectInitializer)
+    : Super(ObjectInitializer) {
     this->MovieInstanceIndex = 0;
     this->SeqJumpError = 0.00f;
     this->EventReceiver = NULL;

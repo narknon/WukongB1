@@ -1,7 +1,7 @@
 using UnrealBuildTool;
 
-public class StructUtils : ModuleRules {
-    public StructUtils(ReadOnlyTargetRules Target) : base(Target) {
+public class GSEProtobufDB : ModuleRules {
+    public GSEProtobufDB(ReadOnlyTargetRules Target) : base(Target) {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         bLegacyPublicIncludePaths = false;
         ShadowVariableWarningLevel = WarningLevel.Warning;

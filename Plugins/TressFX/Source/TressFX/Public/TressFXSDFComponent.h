@@ -7,7 +7,7 @@
 class UTressFXMeshAsset;
 
 UCLASS(Blueprintable, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
-class TRESSFX_API UTressFXSDFComponent : public UMeshComponent, public ILODSyncInterface {
+class TRESSFX_API UTressFXSDFComponent : public UMeshComponent/*, public ILODSyncInterface*/ {
     GENERATED_BODY()
 public:
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, Interp, meta=(AllowPrivateAccess=true))

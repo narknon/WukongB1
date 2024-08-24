@@ -56,7 +56,7 @@ public:
     bool HostGame(bool bIsLAN, int32 MaxNumPlayers, TMap<FString, FString> CustumSettings);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void HandleNetworkErrorCS(UWorld* World, TEnumAsByte<ENetworkFailure::Type> FailureType, const FString& ErrorString);
+    void HandleNetworkErrorCS(UWorld* World, ENetworkFailure::Type FailureType, const FString& ErrorString);
     
     UFUNCTION(BlueprintCallable)
     void FindGames(bool bIsLAN);
