@@ -1,0 +1,8 @@
+{
+	"BuildId": "c4516103-1f94-4114-acfb-f63452ea3ea9",
+	"Modules": 
+	{
+		"Calliope": "UnrealEditor-Calliope.dll",
+		"CalliopeWin64": "UnrealEditor-CalliopeWin64.dll"
+	}
+}

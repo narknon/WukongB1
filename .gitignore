@@ -123,6 +123,7 @@
 
 # Add exceptions for .dlls needed to run built version
 !/Binaries/Win64/*
+!/Binaries/ThirdParty/**/rail_api64.dll
 !/Plugins/**/Binaries/Win64/*
 *.pdb
 

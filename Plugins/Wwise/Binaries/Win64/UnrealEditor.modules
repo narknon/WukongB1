@@ -1,0 +1,11 @@
+{
+	"BuildId": "c4516103-1f94-4114-acfb-f63452ea3ea9",
+	"Modules": 
+	{
+		"AkAudio": "UnrealEditor-AkAudio.dll",
+		"WwiseFileHandler": "UnrealEditor-WwiseFileHandler.dll",
+		"WwiseObjectUtils": "UnrealEditor-WwiseObjectUtils.dll",
+		"WwiseResourceLoader": "UnrealEditor-WwiseResourceLoader.dll",
+		"WwiseSimpleExternalSource": "UnrealEditor-WwiseSimpleExternalSource.dll"
+	}
+}
