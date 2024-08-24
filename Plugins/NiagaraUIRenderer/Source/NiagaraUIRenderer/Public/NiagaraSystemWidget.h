@@ -1,128 +1,110 @@
+// Copyright 2022 - Michal Smoleň
+
 #pragma once
+
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "Components/Widget.h"
-#include "SlateMeshData.h"
+#include "NiagaraWidgetProperties.h"
+#include "Runtime/UMG/Public/Components/Widget.h"
 #include "NiagaraSystemWidget.generated.h"
 
-class UNiagaraSystem;
-class UNiagaraUIComponent;
+class SNiagaraUISystemWidget;
+class UMaterialInterface;
 
-UCLASS(Blueprintable)
-class NIAGARAUIRENDERER_API UNiagaraSystemWidget : public UWidget {
-    GENERATED_BODY()
+/**
+ The Niagara System Widget allows to render niagara particle system directly into the UI. Only sprite and ribbon CPU particles are supported.
+ */
+UCLASS()
+class NIAGARAUIRENDERER_API UNiagaraSystemWidget : public UWidget
+{
+	GENERATED_BODY()
+
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    UNiagaraSystem* NiagaraSystemReference;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool AutoActivate;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool TickWhenPaused;
-    
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool FakeDepthScale;
-    
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float FakeDepthScaleDistance;
-    
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool GSIsNeedWidgetSizeParam;
-    
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FVector4 GSVec4A;
-    
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FVector4 GSVec4B;
-    
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FLinearColor GSColorA;
-    
-    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FLinearColor GSColorB;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FSlateMeshData> MeshData;
-    
+	UNiagaraSystemWidget(const FObjectInitializer& ObjectInitializer);
+	
+	virtual TSharedRef<SWidget> RebuildWidget() override;
+	
+	virtual void SynchronizeProperties() override;
+	
+	virtual void ReleaseSlateResources(bool bReleaseChildren) override;
+
+#if WITH_EDITOR
+	virtual const FText GetPaletteCategory() override;
+
+	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
+#endif
+
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    UNiagaraUIComponent* NiagaraComponent;
-    
+	void InitializeNiagaraUI();
+
 public:
-    UNiagaraSystemWidget();
+	// Activate Niagara System with option to reset the simulation
+	UFUNCTION(BlueprintCallable, Category = "Niagara UI Renderer")
+	void ActivateSystem(bool Reset);
 
-    UFUNCTION(BlueprintCallable)
-    void UpdateTickWhenPaused(bool NewTickWhenPaused);
-    
-    UFUNCTION(BlueprintCallable)
-    void UpdateNiagaraSystemReference(UNiagaraSystem* NewNiagaraSystem);
-    
-    UFUNCTION(BlueprintCallable)
-    void SetGSVec4B(FVector4 InVec4);
-    
-    UFUNCTION(BlueprintCallable)
-    void SetGSVec4A(FVector4 InVec4);
-    
-    UFUNCTION(BlueprintCallable)
-    void SetGSColorB(FLinearColor InColor);
-    
-    UFUNCTION(BlueprintCallable)
-    void SetGSColorA(FLinearColor InColor);
-    
-    UFUNCTION(BlueprintCallable)
-    void ReInitSystem();
-    
-    UFUNCTION(BlueprintCallable)
-    void GSStopFX(bool IsReset);
-    
-    UFUNCTION(BlueprintCallable)
-    void GSSetNiagaraValVector4(const FString& InName, FVector4 InVal);
-    
-    UFUNCTION(BlueprintCallable)
-    void GSSetNiagaraValVector2(const FString& InName, FVector2D InVal);
-    
-    UFUNCTION(BlueprintCallable)
-    void GSSetNiagaraValVector(const FString& InName, FVector InVal);
-    
-    UFUNCTION(BlueprintCallable)
-    void GSSetNiagaraValLinearColor(const FString& InName, FLinearColor InVal);
-    
-    UFUNCTION(BlueprintCallable)
-    void GSSetNiagaraValInt(const FString& InName, int32 InVal);
-    
-    UFUNCTION(BlueprintCallable)
-    void GSSetNiagaraValFloat(const FString& InName, float InVal);
-    
-    UFUNCTION(BlueprintCallable)
-    void GSSetNiagaraValBool(const FString& InName, bool InVal);
-    
-    UFUNCTION(BlueprintCallable)
-    void GSResumeFX();
-    
-    UFUNCTION(BlueprintCallable)
-    void GSPlayFX(bool IsReset);
-    
-    UFUNCTION(BlueprintCallable)
-    void GSPauseFX();
-    
-    UFUNCTION(BlueprintCallable)
-    void GSDestoryFX();
-    
-    UFUNCTION(BlueprintCallable)
-    void GSActiveFX(bool IsActive, bool IsReset);
-    
-    UFUNCTION(BlueprintCallable, BlueprintPure)
-    UNiagaraUIComponent* GetNiagaraComponent();
-    
-    UFUNCTION(BlueprintCallable)
+	// Deactivate Niagara System
+	UFUNCTION(BlueprintCallable, Category = "Niagara UI Renderer")
     void DeactivateSystem();
-    
-    UFUNCTION(BlueprintCallable)
-    void ActivateSystem(bool Reset);
-    
-};
 
+	// Return Niagara Component reference for the particle system.
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Niagara UI Renderer")
+    class UNiagaraUIComponent* GetNiagaraComponent();
+
+	// Updates the Niagara System reference. This will cause the particle system to reset
+	UFUNCTION(BlueprintCallable, Category = "Niagara UI Renderer")
+	void UpdateNiagaraSystemReference(class UNiagaraSystem* NewNiagaraSystem);
+
+	// Updates Tick When Paused - Should be this particle system updated even when the game is paused? Note that this will reset the particle simulation
+	UFUNCTION(BlueprintCallable, Category = "Niagara UI Renderer")
+	void UpdateTickWhenPaused(bool NewTickWhenPaused);
+
+public:
+	// Reference to the niagara system asset
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Niagara UI Renderer", DisplayName = "Niagara System", BlueprintSetter = UpdateNiagaraSystemReference)
+	class UNiagaraSystem* NiagaraSystemReference;
+
+	/*
+		List of material references used to remap materials on the particle system, to materials with "User Interface" material domain.
+
+		Every Key (Material on the left) will be remapped to it's Value (Material on the right)
+
+		This is useful for keeping the particle system rendering correctly in the niagara editor and in the world, while it still can be used as UI particle system.
+
+		The alternative is to apply materials with "User Interface" material domain directly in niagara renderers, but this will result in particle system
+		not rendering correctly, if used outside UI renderer.
+	*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Niagara UI Renderer")
+	TMap<UMaterialInterface*, UMaterialInterface*> MaterialRemapList;
+
+	// Should be this particle system automatically activated?
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Niagara UI Renderer")
+	bool AutoActivate = true;
+
+	// Should be this particle system updated even when the game is paused?
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Niagara UI Renderer", BlueprintSetter = UpdateTickWhenPaused)
+	bool TickWhenPaused = false;
+
+	// Scale particles based on their position in Y-axis (towards the camera)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Niagara UI Renderer", AdvancedDisplay)
+	bool FakeDepthScale = false;
+
+	// Fake distance from camera if the particle is at 0 0 0 - Particles will be getting bigger quicker the lower this number is
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Niagara UI Renderer", AdvancedDisplay, meta = (EditCondition = "FakeDepthScale"))
+	float FakeDepthScaleDistance = 1000.f;
+
+	// Show debug particle system we're rendering in the game world. It'll be near 0 0 0
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Niagara UI Renderer", AdvancedDisplay)
+	bool ShowDebugSystemInWorld = false;
+
+	// Disable warnings for this Widget
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Niagara UI Renderer", AdvancedDisplay)
+	bool DisableWarnings = false;
+
+private:
+	TSharedPtr<SNiagaraUISystemWidget> NiagaraSlateWidget;
+
+	UPROPERTY()
+	class ANiagaraUIActor* NiagaraActor;
+
+	UPROPERTY()
+	class UNiagaraUIComponent* NiagaraComponent;
+};

@@ -1,84 +1,130 @@
+// Copyright 2022 - Michal Smoleň
+
 #include "NiagaraSystemWidget.h"
+#include "SNiagaraUISystemWidget.h"
+#include "Materials/MaterialInterface.h"
+#include "NiagaraUIActor.h"
+#include "NiagaraUIComponent.h"
 
-UNiagaraSystemWidget::UNiagaraSystemWidget() {
-    this->bIsVolatile = true;
-    this->NiagaraSystemReference = NULL;
-    this->AutoActivate = true;
-    this->TickWhenPaused = false;
-    this->FakeDepthScale = false;
-    this->FakeDepthScaleDistance = 1000.00f;
-    this->GSIsNeedWidgetSizeParam = false;
-    this->NiagaraComponent = NULL;
+UNiagaraSystemWidget::UNiagaraSystemWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+{
+	bIsVolatile = true;
 }
 
-void UNiagaraSystemWidget::UpdateTickWhenPaused(bool NewTickWhenPaused) {
+TSharedRef<SWidget> UNiagaraSystemWidget::RebuildWidget()
+{
+	NiagaraSlateWidget = SNew(SNiagaraUISystemWidget);
+
+	InitializeNiagaraUI();
+
+	return NiagaraSlateWidget.ToSharedRef();
 }
 
-void UNiagaraSystemWidget::UpdateNiagaraSystemReference(UNiagaraSystem* NewNiagaraSystem) {
+void UNiagaraSystemWidget::SynchronizeProperties()
+{
+	Super::SynchronizeProperties();
+
+	if (!NiagaraSlateWidget.IsValid())
+	{
+		return;
+	}
+
+	if (!NiagaraActor || !NiagaraComponent)
+		InitializeNiagaraUI();
+	
 }
 
-void UNiagaraSystemWidget::SetGSVec4B(FVector4 InVec4) {
+void UNiagaraSystemWidget::ReleaseSlateResources(bool bReleaseChildren)
+{
+	Super::ReleaseSlateResources(bReleaseChildren);
+	
+	NiagaraSlateWidget.Reset();
+
+	if (NiagaraActor)
+		NiagaraActor->Destroy();
 }
 
-void UNiagaraSystemWidget::SetGSVec4A(FVector4 InVec4) {
+#if WITH_EDITOR
+const FText UNiagaraSystemWidget::GetPaletteCategory()
+{
+	return NSLOCTEXT("NiagaraUIRenderer", "Palette Category", "Niagara");
 }
 
-void UNiagaraSystemWidget::SetGSColorB(FLinearColor InColor) {
+void UNiagaraSystemWidget::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
+{
+	Super::PostEditChangeProperty(PropertyChangedEvent);
+	if (PropertyChangedEvent.MemberProperty)
+	{
+		const FName PropertyName = PropertyChangedEvent.MemberProperty->GetFName();
+		if (PropertyName == GET_MEMBER_NAME_CHECKED(UNiagaraSystemWidget, NiagaraSystemReference)
+			|| PropertyName == GET_MEMBER_NAME_CHECKED(UNiagaraSystemWidget, MaterialRemapList)
+			|| PropertyName == GET_MEMBER_NAME_CHECKED(UNiagaraSystemWidget, AutoActivate)
+			|| PropertyName == GET_MEMBER_NAME_CHECKED(UNiagaraSystemWidget, FakeDepthScale)
+			|| PropertyName == GET_MEMBER_NAME_CHECKED(UNiagaraSystemWidget, FakeDepthScaleDistance))
+		{
+			InitializeNiagaraUI();
+		}
+	}
+}
+#endif
+
+void UNiagaraSystemWidget::InitializeNiagaraUI()
+{
+	if (UWorld* World = GetWorld())
+	{
+		if (!World->PersistentLevel)
+			return;
+
+			
+		if (!NiagaraActor)
+		{
+			FActorSpawnParameters spawnParams;
+			spawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+			NiagaraActor = World->SpawnActor<ANiagaraUIActor>(FVector::ZeroVector, FRotator::ZeroRotator, spawnParams);
+		}
+
+		NiagaraComponent = NiagaraActor->SpawnNewNiagaraUIComponent(NiagaraSystemReference, AutoActivate, ShowDebugSystemInWorld, TickWhenPaused);
+
+		NiagaraSlateWidget->SetNiagaraComponentReference(NiagaraComponent, FNiagaraWidgetProperties(&MaterialRemapList, AutoActivate, ShowDebugSystemInWorld, FakeDepthScale, FakeDepthScaleDistance));
+	}
 }
 
-void UNiagaraSystemWidget::SetGSColorA(FLinearColor InColor) {
+void UNiagaraSystemWidget::ActivateSystem(bool Reset)
+{
+	if (NiagaraComponent)
+		NiagaraComponent->Activate(Reset);
 }
 
-void UNiagaraSystemWidget::ReInitSystem() {
+void UNiagaraSystemWidget::DeactivateSystem()
+{
+	if (NiagaraComponent)
+		NiagaraComponent->Deactivate();
 }
 
-void UNiagaraSystemWidget::GSStopFX(bool IsReset) {
+UNiagaraUIComponent* UNiagaraSystemWidget::GetNiagaraComponent()
+{
+	return NiagaraComponent;
 }
 
-void UNiagaraSystemWidget::GSSetNiagaraValVector4(const FString& InName, FVector4 InVal) {
+void UNiagaraSystemWidget::UpdateNiagaraSystemReference(UNiagaraSystem* NewNiagaraSystem)
+{
+	NiagaraSystemReference = NewNiagaraSystem;
+
+	if (NiagaraComponent)
+	{
+		NiagaraComponent->SetAsset(NewNiagaraSystem);
+		NiagaraComponent->ResetSystem();
+	}
 }
 
-void UNiagaraSystemWidget::GSSetNiagaraValVector2(const FString& InName, FVector2D InVal) {
+void UNiagaraSystemWidget::UpdateTickWhenPaused(bool NewTickWhenPaused)
+{
+	TickWhenPaused = NewTickWhenPaused;
+
+	if (NiagaraComponent)
+	{
+		NiagaraComponent->SetTickableWhenPaused(NewTickWhenPaused);
+		NiagaraComponent->SetForceSolo(NewTickWhenPaused);
+		NiagaraComponent->ResetSystem();
+	}
 }
-
-void UNiagaraSystemWidget::GSSetNiagaraValVector(const FString& InName, FVector InVal) {
-}
-
-void UNiagaraSystemWidget::GSSetNiagaraValLinearColor(const FString& InName, FLinearColor InVal) {
-}
-
-void UNiagaraSystemWidget::GSSetNiagaraValInt(const FString& InName, int32 InVal) {
-}
-
-void UNiagaraSystemWidget::GSSetNiagaraValFloat(const FString& InName, float InVal) {
-}
-
-void UNiagaraSystemWidget::GSSetNiagaraValBool(const FString& InName, bool InVal) {
-}
-
-void UNiagaraSystemWidget::GSResumeFX() {
-}
-
-void UNiagaraSystemWidget::GSPlayFX(bool IsReset) {
-}
-
-void UNiagaraSystemWidget::GSPauseFX() {
-}
-
-void UNiagaraSystemWidget::GSDestoryFX() {
-}
-
-void UNiagaraSystemWidget::GSActiveFX(bool IsActive, bool IsReset) {
-}
-
-UNiagaraUIComponent* UNiagaraSystemWidget::GetNiagaraComponent() {
-    return NULL;
-}
-
-void UNiagaraSystemWidget::DeactivateSystem() {
-}
-
-void UNiagaraSystemWidget::ActivateSystem(bool Reset) {
-}
-
-
