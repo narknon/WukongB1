@@ -1,7 +1,7 @@
 ﻿using UnrealBuildTool;
 
-public class b1GameTarget : TargetRules {
-	public b1GameTarget(TargetInfo Target) : base(Target) {
+public class b1Target : TargetRules {
+	public b1Target(TargetInfo Target) : base(Target) {
 		Type = TargetType.Game;
 		ExtraModuleNames.AddRange(new string[] {
 			"b1",

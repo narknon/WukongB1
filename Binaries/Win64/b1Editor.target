@@ -17,7 +17,7 @@
 		"IsLicenseeVersion": 0,
 		"IsPromotedBuild": 0,
 		"BranchName": "++UE5+Release-5.0",
-		"BuildId": "c4516103-1f94-4114-acfb-f63452ea3ea9"
+		"BuildId": "56b1e907-ee04-4096-bd67-ac2a831bb58b"
 	},
 	"BuildProducts": [
 		{
@@ -26620,6 +26620,10 @@
 		},
 		{
 			"Path": "$(ProjectDir)/Plugins/Arteries/Arteries.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/AsyncLoadingScreen/AsyncLoadingScreen.uplugin",
 			"Type": "UFS"
 		},
 		{
