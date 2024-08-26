@@ -112,6 +112,7 @@
 /.idea
 /*.sln
 /*.xcodeproj
+.vs
 /Makefile
 /CMakeLists.txt
 *.target.xml
