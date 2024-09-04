@@ -1,28 +1,38 @@
 {
-	"FileVersion": 3,
-	"Version": 1,
-	"VersionName": "1.0",
-	"FriendlyName": "USharp",
-	"Description": "Enables programming in C#",
-	"Category": "Programming",
-	"CreatedBy": "",
-	"CreatedByURL": "",
-	"DocsURL": "",
-	"MarketplaceURL": "",
-	"SupportURL": "",
-	"EnabledByDefault": false,
-	"CanContainContent": true,
-	"IsBetaVersion": false,
-	"IsExperimentalVersion": false,
-	"Installed": false,
-	"Modules": [
+	"FileVersion" : 3,
+	"Version" : 1,
+	"VersionName" : "1.0",
+	"FriendlyName" : "USharp",
+	"Description" : "Enables programming in C#",
+	"Category" : "Programming",
+	"CreatedBy" : "",
+	"CreatedByURL" : "",
+	"DocsURL" : "",
+	"MarketplaceURL" : "",
+	"SupportURL" : "",
+	"EnabledByDefault" : true,
+	"CanContainContent" : true,
+	"IsBetaVersion" : false,
+	"Installed" : true,
+	"Modules" :
+	[
 		{
-			"Name": "USharp",
-			"Type": "Runtime",
-			"LoadingPhase": "PostDefault",
-			"PlatformAllowList": [
-				"Win64"
-			]
+			"Name" : "USharp",
+			"Type" : "Runtime",
+			"LoadingPhase" : "PostDefault",
+			"WhitelistPlatforms": [ "Win64", "Mac", "Linux" ]
+		},
+		{
+			"Name" : "USharpEditor",
+			"Type" : "Editor",
+			"LoadingPhase" : "PostDefault"
+		},
+	],
+	"Plugins":
+	[
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
 		}
 	]
 }
