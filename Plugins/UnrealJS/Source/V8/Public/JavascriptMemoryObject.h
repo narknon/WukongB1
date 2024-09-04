@@ -1,13 +1,16 @@
 #pragma once
-#include "CoreMinimal.h"
-#include "UObject/Object.h"
+
 #include "JavascriptMemoryObject.generated.h"
 
-UCLASS(Abstract, Blueprintable)
-class V8_API UJavascriptMemoryObject : public UObject {
-    GENERATED_BODY()
+/**
+ * 
+ */
+UCLASS(BlueprintType, Abstract)
+class V8_API UJavascriptMemoryObject : public UObject
+{
+	GENERATED_BODY()
+
 public:
-    UJavascriptMemoryObject();
-
+	virtual void* GetMemory() { return nullptr; }
+	virtual int32 GetSize() { return 0; }
 };
-

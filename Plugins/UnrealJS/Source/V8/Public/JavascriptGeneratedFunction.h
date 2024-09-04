@@ -1,13 +1,20 @@
 #pragma once
-#include "CoreMinimal.h"
 
+#include "UObject/Class.h"
+#include "UObject/ObjectMacros.h"
+#include "UObject/Stack.h"
+#include "UObject/ScriptMacros.h"
 #include "JavascriptGeneratedFunction.generated.h"
 
-UCLASS(Blueprintable)
-class V8_API UJavascriptGeneratedFunction : public UFunction {
-    GENERATED_BODY()
-public:
-    UJavascriptGeneratedFunction();
+struct FJavascriptContext;
 
+UCLASS()
+class V8_API UJavascriptGeneratedFunction : public UFunction
+{
+	GENERATED_BODY()
+
+public:		
+	TWeakPtr<FJavascriptContext> JavascriptContext;	
+
+	DECLARE_FUNCTION(Thunk);
 };
-

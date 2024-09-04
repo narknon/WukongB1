@@ -1,21 +1,17 @@
 #pragma once
-#include "CoreMinimal.h"
-#include "UObject/Object.h"
-#include "JavascriptFunction.h"
-#include "JavascriptRef.h"
+
+#include "JavascriptIsolate.h"
 #include "JavascriptObject.generated.h"
 
-UCLASS(Blueprintable)
-class V8_API UJavascriptObject : public UObject {
-    GENERATED_BODY()
-public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FJavascriptRef Ref;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FJavascriptFunction Func;
-    
-    UJavascriptObject();
+UCLASS()
+class V8_API UJavascriptObject : public UObject
+{
+	GENERATED_BODY()
 
+public:		
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GenericGraphNode")
+	FJavascriptRef Ref;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GenericGraphNode")
+	FJavascriptFunction Func;
 };
-

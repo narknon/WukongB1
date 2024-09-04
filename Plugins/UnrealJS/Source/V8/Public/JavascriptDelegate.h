@@ -1,16 +1,23 @@
 #pragma once
-#include "CoreMinimal.h"
-#include "UObject/Object.h"
+
 #include "JavascriptDelegate.generated.h"
 
-UCLASS(Blueprintable)
-class V8_API UJavascriptDelegate : public UObject {
-    GENERATED_BODY()
+class FJavascriptDelegate;
+
+UCLASS()
+class V8_API UJavascriptDelegate : public UObject
+{
+	GENERATED_BODY()
+
 public:
-    UJavascriptDelegate();
+	int32 UniqueId;
 
-    UFUNCTION(BlueprintCallable)
-    void Fire();
-    
+	TWeakPtr<FJavascriptDelegate> JavascriptDelegate;	
+
+	virtual void BeginDestroy() override;
+
+	UFUNCTION(BlueprintCallable, Category = "Scripting|Javascript")
+	void Fire();
+
+	virtual void ProcessEvent(UFunction* Function, void* Parms) override;
 };
-

@@ -1,20 +1,27 @@
-using UnrealBuildTool;
+﻿using UnrealBuildTool;
 
-public class JavascriptUMG : ModuleRules {
-    public JavascriptUMG(ReadOnlyTargetRules Target) : base(Target) {
+public class JavascriptUMG : ModuleRules
+{
+	public JavascriptUMG(ReadOnlyTargetRules Target) : base(Target)
+	{
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-        bLegacyPublicIncludePaths = false;
-        ShadowVariableWarningLevel = WarningLevel.Warning;
-        
         PublicDependencyModuleNames.AddRange(new string[] {
             "Core",
             "CoreUObject",
             "Engine",
             "InputCore",
             "Slate",
-            "SlateCore",
+			"SlateCore",
+			"RenderCore",
+			"RHI",
             "UMG",
-            "V8",
+            "V8"
         });
+        if (Target.Type == TargetType.Editor)
+        {
+            PrivateDependencyModuleNames.AddRange(new string[] {
+                "EditorWidgets",
+            });
+        }
     }
 }

@@ -1,81 +1,84 @@
-#pragma once
-#include "CoreMinimal.h"
-#include "UObject/Object.h"
+﻿#pragma once
+
 #include "JavascriptProcess.generated.h"
 
-class UJavascriptProcess;
+/**
+ * 
+ */
+UCLASS(BlueprintType)
+class V8_API UJavascriptProcess: public UObject
+{
+	GENERATED_UCLASS_BODY()
 
-UCLASS(Blueprintable)
-class V8_API UJavascriptProcess : public UObject {
-    GENERATED_BODY()
 public:
-    UJavascriptProcess();
+	FProcHandle ProcessHandle;
+	uint32 ProcessID;
+	void* ReadPipe;
+	void* WritePipe;
 
-    UFUNCTION(BlueprintCallable)
-    bool WriteToPipe(const FString& Message, FString& OutWritten);
-    
-    UFUNCTION(BlueprintCallable)
-    void Wait();
-    
-    UFUNCTION(BlueprintCallable)
-    void Terminate(bool KillTree);
-    
-    UFUNCTION(BlueprintCallable)
-    static void Sleep(float Seconds);
-    
-    UFUNCTION(BlueprintCallable)
-    static void SimulateKeypress(int32 KeyEvent);
-    
-    UFUNCTION(BlueprintCallable)
-    static void SetEnvironmentVar(const FString& VarName, const FString& VarValue);
-    
-    UFUNCTION(BlueprintCallable)
-    FString ReadFromPipe();
-    
-    UFUNCTION(BlueprintCallable)
-    bool ReadArrayFromPipe(TArray<uint8>& Array);
-    
-    UFUNCTION(BlueprintCallable)
-    static UJavascriptProcess* Open_PID(int32 ProcessId);
-    
-    UFUNCTION(BlueprintCallable)
-    static UJavascriptProcess* Open(const FString& ProcName);
-    
-    UFUNCTION(BlueprintCallable)
-    static void LaunchURL(const FString& URL, const FString& Parms, FString& Error);
-    
-    UFUNCTION(BlueprintCallable)
-    bool IsRunning();
-    
-    UFUNCTION(BlueprintCallable)
-    static bool IsApplicationRunning_PID(int32 ProcessId);
-    
-    UFUNCTION(BlueprintCallable)
-    static bool IsApplicationRunning(const FString& ProcName);
-    
-    UFUNCTION(BlueprintCallable)
-    static FString GetString(const FString& Key, bool bFlag);
-    
-    UFUNCTION(BlueprintCallable)
-    bool GetReturnCode(int32& ReturnCode);
-    
-    UFUNCTION(BlueprintCallable)
-    static FString GetEnvironmentVar(const FString& VarName);
-    
-    UFUNCTION(BlueprintCallable)
-    static int32 GetCurrentProcessId();
-    
-    UFUNCTION(BlueprintCallable)
-    static FString GetApplicationName(int32 ProcessId);
-    
-    UFUNCTION(BlueprintCallable)
-    static UJavascriptProcess* Create(const FString& URL, const FString& Parms, bool bLaunchDetached, bool bLaunchHidden, bool bLaunchReallyHidden, int32 PriorityModifier, const FString& OptionalWorkingDirectory, bool bUsePipe);
-    
-    UFUNCTION(BlueprintCallable)
-    void Close();
-    
-    UFUNCTION(BlueprintCallable)
-    static bool CanLaunchURL(const FString& URL);
-    
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static UJavascriptProcess* Create(const FString& URL, const FString& Parms, bool bLaunchDetached, bool bLaunchHidden, bool bLaunchReallyHidden, int32 PriorityModifier, const FString& OptionalWorkingDirectory, bool bUsePipe);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static UJavascriptProcess* Open(const FString& ProcName);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static UJavascriptProcess* Open_PID(int32 ProcessId);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static FString GetApplicationName(int32 ProcessId);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static int32 GetCurrentProcessId();
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static bool IsApplicationRunning_PID(int32 ProcessId);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static bool IsApplicationRunning(const FString& ProcName);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static void SetEnvironmentVar(const FString& VarName, const FString& VarValue);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static FString GetEnvironmentVar(const FString& VarName);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	bool IsRunning();
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	void Close();
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static void Sleep(float Seconds);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	void Wait();
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	void Terminate(bool KillTree = false);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	bool GetReturnCode(int32& ReturnCode);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	FString ReadFromPipe();
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	bool ReadArrayFromPipe(TArray<uint8>& Array);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	bool WriteToPipe(const FString& Message, FString& OutWritten);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static void SimulateKeypress(int32 KeyEvent);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static void LaunchURL(const FString& URL, const FString& Parms, FString& Error);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static bool CanLaunchURL(const FString& URL);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript | Scripting")
+	static FString GetString(const FString& Key, bool bFlag);
 };
-

@@ -1,35 +1,57 @@
 #pragma once
+
+#if WITH_EDITOR
+#define V8_ENABLE_DIRECTORY_WATCHER 1
+#else
+#define V8_ENABLE_DIRECTORY_WATCHER 0
+#endif
+
+#if V8_ENABLE_DIRECTORY_WATCHER
+#include "IDirectoryWatcher.h"
+#endif
 #include "CoreMinimal.h"
+#include "UObject/ObjectMacros.h"
 #include "UObject/Object.h"
-#include "DirectoryWatcherCallbackDelegate.h"
+#include "UObject/UObjectGlobals.h"
+#include "UObject/ScriptMacros.h"
 #include "DirectoryWatcher.generated.h"
 
-UCLASS(Blueprintable)
-class V8_API UDirectoryWatcher : public UObject {
-    GENERATED_BODY()
-public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FString> Added;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FString> Modified;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FString> Removed;
-    
-    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FDirectoryWatcherCallback OnChanged;
-    
-    UDirectoryWatcher();
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDirectoryWatcherCallback);
 
-    UFUNCTION(BlueprintCallable)
-    void Watch(const FString& Directory);
-    
-    UFUNCTION(BlueprintCallable)
-    void Unwatch();
-    
-    UFUNCTION(BlueprintCallable)
-    bool Contains(const FString& file);
-    
+UCLASS()
+class V8_API UDirectoryWatcher : public UObject
+{
+	GENERATED_BODY()
+
+public:	
+	virtual void BeginDestroy() override;
+
+#if V8_ENABLE_DIRECTORY_WATCHER
+	IDirectoryWatcher::FDirectoryChanged Changed;
+#endif
+
+	FDelegateHandle DelegateHandle;
+
+	FString Directory;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Javascript")
+	TArray<FString> Added;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Javascript")
+	TArray<FString> Modified;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Javascript")
+	TArray<FString> Removed;
+
+	UPROPERTY(BlueprintAssignable)
+	FDirectoryWatcherCallback OnChanged;
+
+	UFUNCTION(BlueprintCallable, Category = "Scripting|Javascript")
+	bool Contains(const FString& File);
+
+	UFUNCTION(BlueprintCallable, Category = "Scripting|Javascript")
+	void Watch(const FString& Directory);	
+
+	UFUNCTION(BlueprintCallable, Category = "Scripting|Javascript")
+	void Unwatch();
 };
-

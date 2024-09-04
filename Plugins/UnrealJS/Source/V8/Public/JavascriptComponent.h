@@ -1,68 +1,99 @@
 #pragma once
-#include "CoreMinimal.h"
+
+#include "Templates/SubclassOf.h"
 #include "Components/ActorComponent.h"
-#include "JavascriptAsset.h"
-#include "JavascriptClassAsset.h"
+#include "JavascriptContext.h"
 #include "JavascriptComponent.generated.h"
 
-class UJavascriptContext;
-class UJavascriptIsolate;
-class UObject;
+USTRUCT()
+struct V8_API FJavascriptAsset
+{
+	GENERATED_BODY()
 
-UCLASS(Blueprintable, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
-class V8_API UJavascriptComponent : public UActorComponent {
-    GENERATED_BODY()
-public:
-    DECLARE_DYNAMIC_DELEGATE_OneParam(FJavascriptTickSignature, float, DeltaSeconds);
-    DECLARE_DYNAMIC_DELEGATE(FJavascriptNoParamSignature);
-    DECLARE_DYNAMIC_DELEGATE_OneParam(FJavascriptNameSignature, FName, Name);
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FString ScriptSourceFile;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool bActiveWithinEditor;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
-    UJavascriptContext* JavascriptContext;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
-    UJavascriptIsolate* JavascriptIsolate;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FJavascriptTickSignature OnTick;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FJavascriptNoParamSignature OnBeginPlay;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FJavascriptNoParamSignature OnEndPlay;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FJavascriptNameSignature OnInvoke;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FJavascriptAsset> Assets;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FJavascriptClassAsset> ClassAssets;
-    
-    UJavascriptComponent(const FObjectInitializer& ObjectInitializer);
+	UPROPERTY(EditAnywhere, Category = "Javascript")
+	FName Name;
 
-    UFUNCTION(BlueprintCallable)
-    UClass* ResolveClass(FName Name);
-    
-    UFUNCTION(BlueprintCallable)
-    UObject* ResolveAsset(FName Name, bool bTryLoad);
-    
-    UFUNCTION(BlueprintCallable)
-    void Invoke(FName Name);
-    
-    UFUNCTION(BlueprintCallable)
-    void ForceGC();
-    
-    UFUNCTION(BlueprintCallable)
-    void Expose(const FString& ExposedAs, UObject* Object);
-    
+	UPROPERTY(EditAnywhere, Category = "Javascript")
+	FSoftObjectPath Asset;
 };
 
+USTRUCT()
+struct V8_API FJavascriptClassAsset
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, Category = "Javascript")
+	FName Name;
+
+	UPROPERTY(EditAnywhere, Category = "Javascript")
+	TSubclassOf<UObject> Class;
+};
+
+/**
+ * 
+ */
+UCLASS(BlueprintType, ClassGroup = Script, Blueprintable, hideCategories = (ComponentReplication), editinlinenew, meta = (BlueprintSpawnableComponent))
+class V8_API UJavascriptComponent : public UActorComponent
+{
+	GENERATED_UCLASS_BODY()
+
+public:
+	DECLARE_DYNAMIC_DELEGATE_OneParam(FJavascriptTickSignature, float, DeltaSeconds);	
+	DECLARE_DYNAMIC_DELEGATE_OneParam(FJavascriptNameSignature, FName, Name);
+	DECLARE_DYNAMIC_DELEGATE(FJavascriptNoParamSignature);
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Javascript")
+	FString ScriptSourceFile;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Javascript")
+	bool bActiveWithinEditor;
+
+	UPROPERTY(transient)
+	UJavascriptContext* JavascriptContext;
+
+	UPROPERTY(transient)
+	UJavascriptIsolate* JavascriptIsolate;
+
+	UPROPERTY()
+	FJavascriptTickSignature OnTick;
+
+	UPROPERTY()
+	FJavascriptNoParamSignature OnBeginPlay;
+
+	UPROPERTY()
+	FJavascriptNoParamSignature OnEndPlay;
+
+	UPROPERTY()
+	FJavascriptNameSignature OnInvoke;
+
+	UPROPERTY(EditAnywhere, Category = "Javascript")
+	TArray<FJavascriptAsset> Assets;
+
+	UPROPERTY(EditAnywhere, Category = "Javascript")
+	TArray<FJavascriptClassAsset> ClassAssets;
+
+	// Begin UActorComponent interface.
+	virtual void Activate(bool bReset = false) override;
+	virtual void Deactivate() override;	
+	virtual void OnRegister() override;
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+	virtual void BeginDestroy() override;
+	// Begin UActorComponent interface.	
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript")
+	void ForceGC();
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript")
+	void Expose(FString ExposedAs, UObject* Object);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript")
+	void Invoke(FName Name);
+
+	virtual void ProcessEvent(UFunction* Function, void* Parms) override;	
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript")
+	UObject* ResolveAsset(FName Name, bool bTryLoad = true);
+
+	UFUNCTION(BlueprintCallable, Category = "Javascript")
+	UClass* ResolveClass(FName Name);
+};

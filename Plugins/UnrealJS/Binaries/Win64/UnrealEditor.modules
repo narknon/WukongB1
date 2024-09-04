@@ -1,7 +1,10 @@
 {
-	"BuildId": "56b1e907-ee04-4096-bd67-ac2a831bb58b",
+	"BuildId": "95c672da-b188-486a-9c4d-c74dee4d56cf",
 	"Modules": 
 	{
+		"JavascriptConsole": "UnrealEditor-JavascriptConsole.dll",
+		"JavascriptEditor": "UnrealEditor-JavascriptEditor.dll",
+		"JavascriptGraphEditor": "UnrealEditor-JavascriptGraphEditor.dll",
 		"JavascriptHttp": "UnrealEditor-JavascriptHttp.dll",
 		"JavascriptUMG": "UnrealEditor-JavascriptUMG.dll",
 		"JavascriptWebSocket": "UnrealEditor-JavascriptWebSocket.dll",
